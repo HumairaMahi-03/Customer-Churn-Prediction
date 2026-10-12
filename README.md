@@ -29,3 +29,37 @@ Currently completing exploratory data analysis. Data preprocessing, feature engi
 
 ## Tools and Technologies
 Python, Pandas, NumPy, Matplotlib, Seaborn, Scikit-learn.
+
+## Data Preprocessing
+
+The following preprocessing steps have been completed:
+
+- Selected 19 input features and separated the target variable (`Churn`).
+- Excluded `customerID` because it is an identifier.
+- Converted `TotalCharges` to a numeric data type.
+- Separated numerical and categorical features.
+- Split the dataset into training (80%) and testing (20%) sets.
+- Verified that the training and testing sets have no missing values before preprocessing.
+- Built a preprocessing pipeline using Scikit-learn's `ColumnTransformer`.
+- Applied median imputation and standard scaling to numerical features.
+- Applied most-frequent imputation and one-hot encoding to categorical features.
+- Fitted the preprocessing pipeline on the training data and transformed the testing data without fitting on it.
+
+### Train-Test Split and Preprocessing Results
+
+| Item | Result |
+|---|---:|
+| Total records | 7,043 |
+| Input features | 19 |
+| Training samples | 5,634 |
+| Testing samples | 1,409 |
+| Processed training features | 46 |
+| Processed testing features | 46 |
+| Missing values in training data | 0 |
+| Missing values in testing data | 0 |
+
+The original 19 input features were transformed into 46 features after one-hot encoding and numerical preprocessing.
+
+## Project Status
+
+Exploratory data analysis, feature selection, train-test splitting, and preprocessing pipeline development have been completed. Model training, performance comparison, and evaluation are the next steps.
