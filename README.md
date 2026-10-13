@@ -63,3 +63,48 @@ The original 19 input features were transformed into 46 features after one-hot e
 ## Project Status
 
 Exploratory data analysis, feature selection, train-test splitting, and preprocessing pipeline development have been completed. Model training, performance comparison, and evaluation are the next steps.
+### Threshold Tuning
+
+Threshold tuning was performed on the Logistic Regression model to study the trade-off between precision and recall.
+
+| Threshold | Precision | Recall | F1-Score |
+|---|---:|---:|---:|
+| 0.3 | 0.5193 | 0.7540 | 0.6150 |
+| 0.4 | 0.5695 | 0.6684 | 0.6150 |
+| 0.5 | 0.6572 | 0.5588 | 0.6040 |
+
+A threshold of 0.3 achieved the highest recall (75.40%) among the tested thresholds, making it a promising candidate when identifying more at-risk customers is a priority. However, its lower precision means more customers who would not churn may be flagged.
+
+The final threshold should be selected using validation data and business costs, while keeping the test set for final evaluation.
+
+### Day 3 Conclusion
+
+Logistic Regression outperformed Decision Tree and Random Forest on the evaluated metrics. Threshold tuning demonstrated that the classification threshold affects the balance between precision and recall. Further validation and business-oriented error analysis are needed before finalizing the model.
+
+## Final Model Evaluation
+
+After comparing Logistic Regression, Decision Tree, and Random Forest, Logistic Regression was selected for final evaluation. The classification threshold was selected using a validation set, and the final evaluation was performed on the held-out test set.
+
+### Final Test Results
+
+- **Selected model:** Logistic Regression
+- **Selected threshold:** 0.4
+- **Accuracy:** 78.21%
+- **ROC-AUC:** 0.8424
+- **Churn precision:** 0.58
+- **Churn recall:** 0.67
+- **Churn F1-score:** 0.62
+
+### Confusion Matrix
+
+| Actual / Predicted | Stayed | Churned |
+|---|---:|---:|
+| Stayed | 851 | 184 |
+| Churned | 123 | 251 |
+
+### Conclusion
+
+The final Logistic Regression model achieved a ROC-AUC score of 0.8424 on the test set. At a classification threshold of 0.4, it correctly identified 251 of the 374 customers who churned, achieving approximately 67.1% recall for the churn class.
+
+The results suggest that the model can help identify customers at risk of leaving. However, some churners remain undetected, and some retained customers are incorrectly flagged. Further improvements could include feature engineering, class-imbalance handling, and validation-based model tuning.
+
